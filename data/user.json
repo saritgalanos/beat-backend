@@ -1,0 +1,46 @@
+[
+  {
+    "username": "admin",
+    "password": "$2b$10$irIvi9D1pryiaq4EZMAS2u/4NfrGsXlWDsgpaPX0D1ah14gUag.li",
+    "fullname": "admin",
+    "_id": "ayb2t",
+    "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png",
+    "isAdmin": true
+  },
+  {
+    "username": "aaa",
+    "fullname": "aaa",
+    "password": "aaa",
+    "_id": "SAZXR",
+    "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+  },
+  {
+    "username": "sarit",
+    "fullname": "sarit",
+    "password": "aaa",
+    "_id": "aJlAp",
+    "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+  },
+  {
+    "username": "sss",
+    "password": "$2b$10$5/ILsBYg5lwyCTdIotyIgumzErCJCL.EVC.LuQDKoKAvEaqTjB6ji",
+    "fullname": "sss",
+    "_id": "X6GvJ",
+    "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+  },
+  {
+    "username": "qqq",
+    "fullname": "qqq",
+    "password": "www",
+    "_id": "r29v8",
+    "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+  },
+  {
+    "username": "222",
+    "fullname": "222",
+    "password": "222",
+    "_id": "1LN1g",
+    "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+  }
+  
+]
