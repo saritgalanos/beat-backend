@@ -20,7 +20,7 @@ async function query(filterBy) {
     try {
         const criteria = _buildCriteria(filterBy)
         const sortCriteria = _buildSortCriteria(filterBy)
-        console.log('criteria', criteria)
+
 
         const collection = await dbService.getCollection(collectionName)
         const bugCursor = await collection.find(criteria).sort(sortCriteria)

@@ -9,7 +9,7 @@ export async function getStations(req, res) {
             likedByUserId: req.query.likedByUserId || '',
             categoryId: req.query.categoryId || ''
         }
-        console.log(filterBy)
+
         
         const stations = await stationService.query(filterBy)
         res.send(stations)

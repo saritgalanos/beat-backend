@@ -19,19 +19,9 @@ const PAGE_SIZE = 3
 async function query(filterBy) {
     try {
         const criteria = _buildCriteria(filterBy)
-        //const sortCriteria = _buildSortCriteria(filterBy)
-        console.log('criteria', criteria)
-
 
         const collection = await dbService.getCollection(collectionName)
 
-        // var stations = await collection.aggregate(_buildAggregationPipeline(filterBy))
-
-        // console.log(stations)
-
-
-
-        // const stationCursor = await collection.find(criteria).sort(sortCriteria)
         const stationCursor = await collection.find(criteria)
 
         const stations = await stationCursor.toArray()
@@ -125,7 +115,7 @@ async function update(station, loggedinUser) {
 
 
 function _buildCriteria(filterBy) {
-    console.log(filterBy)
+   
     const criteria = {}
 
     if (filterBy.categoryId) {
