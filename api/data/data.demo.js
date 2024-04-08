@@ -1,19 +1,7 @@
 
-
-export async function getSpotifyData(req, res) {
-    try {
-        await loadSpotifyDataToDB()
-        res.send('Spotify data fetched and stored successfully');
-    } catch (err) {
-        res.status(400).send(`couldn't get spotify data`)
-    }
-}
-
-
-
 async function loadSpotifyDataToDB() {
 
-    const accessToken = await getSpotifyAccessToken();
+    const accessToken = await getSpotifyAccessToken()
     if (!accessToken) {
         res.status(500).send('Failed to obtain access token from Spotify');
         return;
@@ -24,7 +12,8 @@ async function loadSpotifyDataToDB() {
         for (const category of categories) {
              const playlists = await _fetchAllStationsForCategory(category, accessToken)
              for (const playlist of playlists) {
-                await stationService.add(playlist);
+                /*add to database*/
+                await stationService.add(playlist)
             }
         }
     } catch (error) {
@@ -35,8 +24,8 @@ async function loadSpotifyDataToDB() {
 
 
 async function getSpotifyAccessToken() {
-    const authString = btoa(`${clientId}:${clientSecret}`);
-    console.log('authString', authString)
+    const authString = btoa(`${clientId}:${clientSecret}`)
+  
     try {
         const response = await fetch('https://accounts.spotify.com/api/token', {
             method: 'POST',
@@ -47,18 +36,16 @@ async function getSpotifyAccessToken() {
             body: 'grant_type=client_credentials',
         });
 
-        const data = await response.json();
-        return data.access_token;
+        const data = await response.json()
+        return data.access_token
     } catch (error) {
-        console.error('Error fetching Spotify access token:', error);
-        return null;
+        return null
     }
 }
 
 
 
 async function _fetchAllStationsForCategory(category, accessToken) {
-    console.log('fetchAllStationsForCategory')
     //take data from spotify
     const data = await _fetchSpotifyPlaylistsAndTracksForCategory(category, accessToken)
     const spotifyStations = []
@@ -77,7 +64,6 @@ async function _fetchSpotifyPlaylistsAndTracksForCategory(category, accessToken)
     const categoryPlayLists = []
 
     try {
-        console.log('fetching category:', category.name)
         const playlistsData = await _fetchPlaylistsForCategory(category.id, accessToken)
 
         /*fetch songs only for the first categories*/
@@ -89,7 +75,7 @@ async function _fetchSpotifyPlaylistsAndTracksForCategory(category, accessToken)
             playlist.likes = await _fetchPlaylistFollowers(playlist.id, accessToken)
             categoryPlayLists.push(playlist)
             await _delay(1500)
-            console.log('fetching next item')
+            
         }
 
     } catch (error) {
@@ -143,7 +129,6 @@ async function _fetchPlaylistFollowers(playlistId, accessToken) {
 
 
 function _createStationFromSpotifyPlayList(playlist) {
-    console.log('saving playlist:', playlist.name)
     var station = _getEmptyStation()
     if (!_validateStation(playlist))
         return null
@@ -158,8 +143,7 @@ function _createStationFromSpotifyPlayList(playlist) {
     if (playlist.categoryId) {
         station.categoryId = playlist.categoryId
     }
-    console.log(playlist)
-
+ 
     playlist.tracks.items.slice(0, 40).forEach(song => {
         if (!_validateSong(song)) {
             return
